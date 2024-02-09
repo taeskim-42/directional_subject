@@ -56,8 +56,7 @@ class GameRecord with _$GameRecord {
   }) =>
       GameRecord(
         endTime: endTime,
-        winner: const Player(
-            id: '', name: '', mark: '', markColor: Colors.transparent),
+        winner: Player.init(),
         player1: player1,
         player2: player2,
         board: board,

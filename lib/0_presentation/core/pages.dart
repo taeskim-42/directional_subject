@@ -20,12 +20,12 @@ List<GetPage> allPages() => [
         page: () => const GamePage(),
       ),
       GetPage(
-        name: "/gameRecord",
+        name: "/records",
         binding: GameRecordPageBinding(),
         page: () => const GameRecordPage(),
       ),
       GetPage(
-        name: "/gameSettings",
+        name: "/settings",
         binding: GameSettingsPageBinding(),
         page: () => const GameSettingsPage(),
       ),

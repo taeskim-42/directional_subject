@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Board {
   int get size => throw _privateConstructorUsedError;
   List<List<String>> get cells => throw _privateConstructorUsedError;
+  int get winCondition => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BoardCopyWith<Board> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ abstract class $BoardCopyWith<$Res> {
   factory $BoardCopyWith(Board value, $Res Function(Board) then) =
       _$BoardCopyWithImpl<$Res, Board>;
   @useResult
-  $Res call({int size, List<List<String>> cells});
+  $Res call({int size, List<List<String>> cells, int winCondition});
 }
 
 /// @nodoc
@@ -46,6 +47,7 @@ class _$BoardCopyWithImpl<$Res, $Val extends Board>
   $Res call({
     Object? size = null,
     Object? cells = null,
+    Object? winCondition = null,
   }) {
     return _then(_value.copyWith(
       size: null == size
@@ -56,6 +58,10 @@ class _$BoardCopyWithImpl<$Res, $Val extends Board>
           ? _value.cells
           : cells // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
+      winCondition: null == winCondition
+          ? _value.winCondition
+          : winCondition // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -67,7 +73,7 @@ abstract class _$$BoardImplCopyWith<$Res> implements $BoardCopyWith<$Res> {
       __$$BoardImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int size, List<List<String>> cells});
+  $Res call({int size, List<List<String>> cells, int winCondition});
 }
 
 /// @nodoc
@@ -83,6 +89,7 @@ class __$$BoardImplCopyWithImpl<$Res>
   $Res call({
     Object? size = null,
     Object? cells = null,
+    Object? winCondition = null,
   }) {
     return _then(_$BoardImpl(
       size: null == size
@@ -93,6 +100,10 @@ class __$$BoardImplCopyWithImpl<$Res>
           ? _value._cells
           : cells // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
+      winCondition: null == winCondition
+          ? _value.winCondition
+          : winCondition // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -101,7 +112,9 @@ class __$$BoardImplCopyWithImpl<$Res>
 
 class _$BoardImpl implements _Board {
   const _$BoardImpl(
-      {required this.size, required final List<List<String>> cells})
+      {required this.size,
+      required final List<List<String>> cells,
+      required this.winCondition})
       : _cells = cells;
 
   @override
@@ -115,8 +128,11 @@ class _$BoardImpl implements _Board {
   }
 
   @override
+  final int winCondition;
+
+  @override
   String toString() {
-    return 'Board(size: $size, cells: $cells)';
+    return 'Board(size: $size, cells: $cells, winCondition: $winCondition)';
   }
 
   @override
@@ -125,12 +141,14 @@ class _$BoardImpl implements _Board {
         (other.runtimeType == runtimeType &&
             other is _$BoardImpl &&
             (identical(other.size, size) || other.size == size) &&
-            const DeepCollectionEquality().equals(other._cells, _cells));
+            const DeepCollectionEquality().equals(other._cells, _cells) &&
+            (identical(other.winCondition, winCondition) ||
+                other.winCondition == winCondition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, size, const DeepCollectionEquality().hash(_cells));
+  int get hashCode => Object.hash(runtimeType, size,
+      const DeepCollectionEquality().hash(_cells), winCondition);
 
   @JsonKey(ignore: true)
   @override
@@ -142,12 +160,15 @@ class _$BoardImpl implements _Board {
 abstract class _Board implements Board {
   const factory _Board(
       {required final int size,
-      required final List<List<String>> cells}) = _$BoardImpl;
+      required final List<List<String>> cells,
+      required final int winCondition}) = _$BoardImpl;
 
   @override
   int get size;
   @override
   List<List<String>> get cells;
+  @override
+  int get winCondition;
   @override
   @JsonKey(ignore: true)
   _$$BoardImplCopyWith<_$BoardImpl> get copyWith =>

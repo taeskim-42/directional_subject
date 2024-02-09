@@ -1,9 +1,9 @@
-import 'package:directional_subject/0_presentation/home/home_page.dart';
+import 'package:directional_subject/1_application/home/home_page_controller.dart';
 import 'package:get/get.dart';
 
 class HomePageBinding implements Bindings {
   @override
   void dependencies() {
-    Get.put(const HomePage());
+    Get.put(HomePageController());
   }
 }

@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Player {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get mark => throw _privateConstructorUsedError;
-  Color get markColor => throw _privateConstructorUsedError;
+  PlayerMark get mark => throw _privateConstructorUsedError;
+  PlayerColor get markColor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerCopyWith<Player> get copyWith => throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ abstract class $PlayerCopyWith<$Res> {
   factory $PlayerCopyWith(Player value, $Res Function(Player) then) =
       _$PlayerCopyWithImpl<$Res, Player>;
   @useResult
-  $Res call({String id, String name, String mark, Color markColor});
+  $Res call({String id, String name, PlayerMark mark, PlayerColor markColor});
 }
 
 /// @nodoc
@@ -63,11 +63,11 @@ class _$PlayerCopyWithImpl<$Res, $Val extends Player>
       mark: null == mark
           ? _value.mark
           : mark // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PlayerMark,
       markColor: null == markColor
           ? _value.markColor
           : markColor // ignore: cast_nullable_to_non_nullable
-              as Color,
+              as PlayerColor,
     ) as $Val);
   }
 }
@@ -79,7 +79,7 @@ abstract class _$$PlayerImplCopyWith<$Res> implements $PlayerCopyWith<$Res> {
       __$$PlayerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String mark, Color markColor});
+  $Res call({String id, String name, PlayerMark mark, PlayerColor markColor});
 }
 
 /// @nodoc
@@ -110,11 +110,11 @@ class __$$PlayerImplCopyWithImpl<$Res>
       mark: null == mark
           ? _value.mark
           : mark // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PlayerMark,
       markColor: null == markColor
           ? _value.markColor
           : markColor // ignore: cast_nullable_to_non_nullable
-              as Color,
+              as PlayerColor,
     ));
   }
 }
@@ -133,9 +133,9 @@ class _$PlayerImpl implements _Player {
   @override
   final String name;
   @override
-  final String mark;
+  final PlayerMark mark;
   @override
-  final Color markColor;
+  final PlayerColor markColor;
 
   @override
   String toString() {
@@ -168,17 +168,17 @@ abstract class _Player implements Player {
   const factory _Player(
       {required final String id,
       required final String name,
-      required final String mark,
-      required final Color markColor}) = _$PlayerImpl;
+      required final PlayerMark mark,
+      required final PlayerColor markColor}) = _$PlayerImpl;
 
   @override
   String get id;
   @override
   String get name;
   @override
-  String get mark;
+  PlayerMark get mark;
   @override
-  Color get markColor;
+  PlayerColor get markColor;
   @override
   @JsonKey(ignore: true)
   _$$PlayerImplCopyWith<_$PlayerImpl> get copyWith =>

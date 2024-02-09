@@ -5,6 +5,8 @@ class GameSettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("this is GameSettings");
+    return const Column(
+      children: [],
+    );
   }
 }
