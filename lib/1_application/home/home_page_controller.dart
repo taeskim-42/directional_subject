@@ -4,4 +4,6 @@ import 'package:get/instance_manager.dart';
 
 class HomePageController extends GetxController {
   final router = Get.find<IAppRouter>();
+
+  
 }

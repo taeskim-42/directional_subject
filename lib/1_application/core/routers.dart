@@ -5,7 +5,7 @@ abstract class IAppRouter {
   void toHome();
   void back<T>({T? result, bool closeOverlay = true});
   void toGameSettings();
-  void toGame<T>(Game game);
+  void toGame(Game game);
   void toGameRecords();
 }
 
@@ -39,7 +39,9 @@ class AppRouter extends IAppRouter {
   }
 
   @override
-  void toGame<T>(Game game) {
-    Get.offAllNamed("/game", arguments: game);
+  void toGame(Game? game) {
+    if (game != null) {
+      Get.toNamed("/game", arguments: {'game': game});
+    }
   }
 }

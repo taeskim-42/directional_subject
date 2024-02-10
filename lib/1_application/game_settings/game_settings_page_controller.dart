@@ -14,19 +14,21 @@ class GameSettingsPageController extends GetxController {
   // player settings
   final player1 = Player.init()
       .copyWith(
+        name: '1',
         mark: PlayerMark.cross,
         markColor: PlayerColor.blue,
       )
       .obs;
   final player2 = Player.init()
       .copyWith(
+        name: '2',
         mark: PlayerMark.circle,
         markColor: PlayerColor.red,
       )
       .obs;
 
   // Game Settings
-  final currentPlayer = 0.obs;
+  final currentPlayer = Player.init().obs;
 
   void makeGame() {
     final board = Board.init(size.value, windCondition.value);
@@ -34,9 +36,10 @@ class GameSettingsPageController extends GetxController {
       player1: player1.value,
       player2: player2.value,
       board: board,
-      currentPlayer: currentPlayer.value == 0 ? player1.value : player2.value,
+      currentPlayer: player1.value,
       state: GameState.inProgress,
     );
+
     router.toGame(game);
   }
 }

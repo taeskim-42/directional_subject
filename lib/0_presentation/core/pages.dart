@@ -13,20 +13,24 @@ List<GetPage> allPages() => [
         name: "/",
         binding: HomePageBinding(),
         page: () => const HomePage(),
+        transition: Transition.noTransition,
       ),
       GetPage(
         name: "/game",
         binding: GamePageBinding(),
         page: () => const GamePage(),
+        transition: Transition.noTransition,
       ),
-      GetPage(
-        name: "/records",
-        binding: GameRecordPageBinding(),
-        page: () => const GameRecordPage(),
-      ),
+      // GetPage(
+      //   name: "/records",
+      //   binding: GameRecordPageBinding(),
+      //   page: () => const GameRecordPage(),
+      // transition: Transition.noTransition,
+      // ),
       GetPage(
         name: "/settings",
         binding: GameSettingsPageBinding(),
         page: () => const GameSettingsPage(),
+        transition: Transition.noTransition,
       ),
     ];

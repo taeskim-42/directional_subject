@@ -23,7 +23,7 @@ extension PlayerExtension on Player {
 }
 
 // 가능한 마크를 정의하는 enum
-enum PlayerMark { circle, cross, square, triangle }
+enum PlayerMark { circle, cross, square, triangle, empty }
 
 // 가능한 색상을 정의하는 enum
 enum PlayerColor { blue, red, green, black }
@@ -40,7 +40,7 @@ extension PlayerMarkExtension on PlayerMark {
         return "■";
       case PlayerMark.triangle:
         return "▲";
-      default:
+      case PlayerMark.empty:
         return "";
     }
   }

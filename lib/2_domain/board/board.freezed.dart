@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Board {
   int get size => throw _privateConstructorUsedError;
-  List<List<String>> get cells => throw _privateConstructorUsedError;
+  List<List<PlayerMark>> get cells => throw _privateConstructorUsedError;
   int get winCondition => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +29,7 @@ abstract class $BoardCopyWith<$Res> {
   factory $BoardCopyWith(Board value, $Res Function(Board) then) =
       _$BoardCopyWithImpl<$Res, Board>;
   @useResult
-  $Res call({int size, List<List<String>> cells, int winCondition});
+  $Res call({int size, List<List<PlayerMark>> cells, int winCondition});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$BoardCopyWithImpl<$Res, $Val extends Board>
       cells: null == cells
           ? _value.cells
           : cells // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+              as List<List<PlayerMark>>,
       winCondition: null == winCondition
           ? _value.winCondition
           : winCondition // ignore: cast_nullable_to_non_nullable
@@ -73,7 +73,7 @@ abstract class _$$BoardImplCopyWith<$Res> implements $BoardCopyWith<$Res> {
       __$$BoardImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int size, List<List<String>> cells, int winCondition});
+  $Res call({int size, List<List<PlayerMark>> cells, int winCondition});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$BoardImplCopyWithImpl<$Res>
       cells: null == cells
           ? _value._cells
           : cells // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+              as List<List<PlayerMark>>,
       winCondition: null == winCondition
           ? _value.winCondition
           : winCondition // ignore: cast_nullable_to_non_nullable
@@ -113,15 +113,15 @@ class __$$BoardImplCopyWithImpl<$Res>
 class _$BoardImpl implements _Board {
   const _$BoardImpl(
       {required this.size,
-      required final List<List<String>> cells,
+      required final List<List<PlayerMark>> cells,
       required this.winCondition})
       : _cells = cells;
 
   @override
   final int size;
-  final List<List<String>> _cells;
+  final List<List<PlayerMark>> _cells;
   @override
-  List<List<String>> get cells {
+  List<List<PlayerMark>> get cells {
     if (_cells is EqualUnmodifiableListView) return _cells;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cells);
@@ -160,13 +160,13 @@ class _$BoardImpl implements _Board {
 abstract class _Board implements Board {
   const factory _Board(
       {required final int size,
-      required final List<List<String>> cells,
+      required final List<List<PlayerMark>> cells,
       required final int winCondition}) = _$BoardImpl;
 
   @override
   int get size;
   @override
-  List<List<String>> get cells;
+  List<List<PlayerMark>> get cells;
   @override
   int get winCondition;
   @override

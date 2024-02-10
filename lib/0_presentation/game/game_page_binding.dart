@@ -3,9 +3,11 @@ import 'package:directional_subject/2_domain/game/game.dart';
 import 'package:get/get.dart';
 
 class GamePageBinding implements Bindings {
-  final game = Get.arguments as Game;
   @override
   void dependencies() {
-    Get.put(GamePageController(game));
+    // final argMap = Get.arguments as Map<String, dynamic>;
+    // final game = argMap['game'] as Game;
+    // Get.put(GamePageController(game));
+    Get.put(GamePageController());
   }
 }

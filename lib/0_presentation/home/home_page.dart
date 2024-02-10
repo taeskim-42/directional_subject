@@ -18,7 +18,7 @@ class HomePage extends GetView<HomePageController> {
           children: [
             OutlinedButton(
               onPressed: () => controller.router.toGameSettings(),
-              child: const Text("게임 시작하기"),
+              child: const Text("게임 설정하기"),
             ),
             OutlinedButton(
               onPressed: () => controller.router.toGameRecords(),
