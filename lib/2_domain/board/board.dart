@@ -8,20 +8,28 @@ part 'board.freezed.dart';
 class Board with _$Board {
   const factory Board({
     required int size,
-    required List<List<PlayerMark>> cells,
+    required List<List<Mark>> cells,
     required int winCondition,
   }) = _Board;
 
   factory Board.init(int size, [int? winCondition]) {
     final effectiveWinCondition = min(winCondition ?? size, size);
-    final cells =
-        List.generate(size, (_) => List.filled(size, PlayerMark.empty));
+    final cells = List.generate(
+      size,
+      (_) => List.filled(
+        size,
+        Mark(
+          mark: PlayerMark.empty,
+          markColor: PlayerColor.black,
+        ),
+      ),
+    );
     return Board(size: size, cells: cells, winCondition: effectiveWinCondition);
   }
 }
 
 extension BoardExtension on Board {
-  Board placeMark(int row, int col, PlayerMark mark) {
+  Board placeMark(int row, int col, Mark mark) {
     final newCells = List.of(cells, growable: false);
     newCells[row] = List.of(newCells[row]);
     newCells[row][col] = mark;
@@ -32,7 +40,8 @@ extension BoardExtension on Board {
     return Board.init(size, winCondition);
   }
 
-  bool checkWin(PlayerMark mark) {
+  bool checkWin(Mark mark) {
+    // 행과 열 검사
     for (int i = 0; i < size; i++) {
       int rowCount = 0;
       int colCount = 0;
@@ -43,12 +52,24 @@ extension BoardExtension on Board {
       if (rowCount == winCondition || colCount == winCondition) return true;
     }
 
-    int diag1Count = 0;
-    int diag2Count = 0;
-    for (int i = 0; i < size; i++) {
-      if (cells[i][i] == mark) diag1Count++;
-      if (cells[i][size - 1 - i] == mark) diag2Count++;
+    // 대각선 검사
+    for (int startRow = 0; startRow <= size - winCondition; startRow++) {
+      for (int startCol = 0; startCol <= size - winCondition; startCol++) {
+        int diag1Count = 0;
+        int diag2Count = 0;
+        for (int i = 0; i < winCondition; i++) {
+          if (cells[startRow + i][startCol + i] == mark) diag1Count++;
+          if (cells[startRow + i][startCol + winCondition - 1 - i] == mark) {
+            diag2Count++;
+          }
+        }
+        if (diag1Count == winCondition || diag2Count == winCondition) {
+          return true;
+        }
+      }
     }
-    return diag1Count == winCondition || diag2Count == winCondition;
+
+    // 모든 검사에서 승리 조건을 만족하지 못한 경우
+    return false;
   }
 }

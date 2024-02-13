@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 class GamePageBinding implements Bindings {
   @override
   void dependencies() {
-    // final argMap = Get.arguments as Map<String, dynamic>;
-    // final game = argMap['game'] as Game;
-    // Get.put(GamePageController(game));
-    Get.put(GamePageController());
+    final argMap = Get.arguments as Map<String, dynamic>;
+    final game = argMap['game'] as Game;
+    Get.put(GamePageController(game));
   }
 }

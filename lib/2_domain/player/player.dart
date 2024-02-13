@@ -8,14 +8,25 @@ class Player with _$Player {
   const factory Player({
     required String id,
     required String name,
-    required PlayerMark mark,
-    required PlayerColor markColor,
+    required Mark mark,
   }) = _Player;
 
   factory Player.init() {
-    return const Player(
-        id: '', name: '', mark: PlayerMark.cross, markColor: PlayerColor.black);
+    return Player(
+        id: '',
+        name: '',
+        mark: Mark(
+          mark: PlayerMark.cross,
+          markColor: PlayerColor.black,
+        ));
   }
+}
+
+class Mark {
+  final PlayerMark mark;
+  final PlayerColor markColor;
+
+  Mark({required this.mark, required this.markColor});
 }
 
 extension PlayerExtension on Player {
@@ -40,7 +51,7 @@ extension PlayerMarkExtension on PlayerMark {
         return "■";
       case PlayerMark.triangle:
         return "▲";
-      case PlayerMark.empty:
+      default:
         return "";
     }
   }

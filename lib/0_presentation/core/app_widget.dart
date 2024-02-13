@@ -9,6 +9,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.black,

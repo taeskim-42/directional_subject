@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Player {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  PlayerMark get mark => throw _privateConstructorUsedError;
-  PlayerColor get markColor => throw _privateConstructorUsedError;
+  Mark get mark => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerCopyWith<Player> get copyWith => throw _privateConstructorUsedError;
@@ -30,7 +29,7 @@ abstract class $PlayerCopyWith<$Res> {
   factory $PlayerCopyWith(Player value, $Res Function(Player) then) =
       _$PlayerCopyWithImpl<$Res, Player>;
   @useResult
-  $Res call({String id, String name, PlayerMark mark, PlayerColor markColor});
+  $Res call({String id, String name, Mark mark});
 }
 
 /// @nodoc
@@ -49,7 +48,6 @@ class _$PlayerCopyWithImpl<$Res, $Val extends Player>
     Object? id = null,
     Object? name = null,
     Object? mark = null,
-    Object? markColor = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -63,11 +61,7 @@ class _$PlayerCopyWithImpl<$Res, $Val extends Player>
       mark: null == mark
           ? _value.mark
           : mark // ignore: cast_nullable_to_non_nullable
-              as PlayerMark,
-      markColor: null == markColor
-          ? _value.markColor
-          : markColor // ignore: cast_nullable_to_non_nullable
-              as PlayerColor,
+              as Mark,
     ) as $Val);
   }
 }
@@ -79,7 +73,7 @@ abstract class _$$PlayerImplCopyWith<$Res> implements $PlayerCopyWith<$Res> {
       __$$PlayerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, PlayerMark mark, PlayerColor markColor});
+  $Res call({String id, String name, Mark mark});
 }
 
 /// @nodoc
@@ -96,7 +90,6 @@ class __$$PlayerImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? mark = null,
-    Object? markColor = null,
   }) {
     return _then(_$PlayerImpl(
       id: null == id
@@ -110,11 +103,7 @@ class __$$PlayerImplCopyWithImpl<$Res>
       mark: null == mark
           ? _value.mark
           : mark // ignore: cast_nullable_to_non_nullable
-              as PlayerMark,
-      markColor: null == markColor
-          ? _value.markColor
-          : markColor // ignore: cast_nullable_to_non_nullable
-              as PlayerColor,
+              as Mark,
     ));
   }
 }
@@ -123,23 +112,18 @@ class __$$PlayerImplCopyWithImpl<$Res>
 
 class _$PlayerImpl implements _Player {
   const _$PlayerImpl(
-      {required this.id,
-      required this.name,
-      required this.mark,
-      required this.markColor});
+      {required this.id, required this.name, required this.mark});
 
   @override
   final String id;
   @override
   final String name;
   @override
-  final PlayerMark mark;
-  @override
-  final PlayerColor markColor;
+  final Mark mark;
 
   @override
   String toString() {
-    return 'Player(id: $id, name: $name, mark: $mark, markColor: $markColor)';
+    return 'Player(id: $id, name: $name, mark: $mark)';
   }
 
   @override
@@ -149,13 +133,11 @@ class _$PlayerImpl implements _Player {
             other is _$PlayerImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.mark, mark) || other.mark == mark) &&
-            (identical(other.markColor, markColor) ||
-                other.markColor == markColor));
+            (identical(other.mark, mark) || other.mark == mark));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, mark, markColor);
+  int get hashCode => Object.hash(runtimeType, id, name, mark);
 
   @JsonKey(ignore: true)
   @override
@@ -168,17 +150,14 @@ abstract class _Player implements Player {
   const factory _Player(
       {required final String id,
       required final String name,
-      required final PlayerMark mark,
-      required final PlayerColor markColor}) = _$PlayerImpl;
+      required final Mark mark}) = _$PlayerImpl;
 
   @override
   String get id;
   @override
   String get name;
   @override
-  PlayerMark get mark;
-  @override
-  PlayerColor get markColor;
+  Mark get mark;
   @override
   @JsonKey(ignore: true)
   _$$PlayerImplCopyWith<_$PlayerImpl> get copyWith =>
