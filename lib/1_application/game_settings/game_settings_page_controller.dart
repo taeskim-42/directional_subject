@@ -13,7 +13,11 @@ class GameSettingsPageController extends GetxController {
   final currentPlayer = Player.init()
       .copyWith(
         name: 'Player1',
-        mark: Mark(mark: PlayerMark.cross, markColor: PlayerColor.blue),
+        mark: Mark(
+          mark: PlayerMark.cross,
+          markColor: PlayerColor.blue,
+          index: 0,
+        ),
       )
       .obs;
 
@@ -25,13 +29,21 @@ class GameSettingsPageController extends GetxController {
   final player1 = Player.init()
       .copyWith(
         name: 'Player1',
-        mark: Mark(mark: PlayerMark.cross, markColor: PlayerColor.blue),
+        mark: Mark(
+          mark: PlayerMark.cross,
+          markColor: PlayerColor.blue,
+          index: 0,
+        ),
       )
       .obs;
   final player2 = Player.init()
       .copyWith(
         name: 'Player2',
-        mark: Mark(mark: PlayerMark.circle, markColor: PlayerColor.red),
+        mark: Mark(
+          mark: PlayerMark.circle,
+          markColor: PlayerColor.red,
+          index: 0,
+        ),
       )
       .obs;
   final selectedPlayer = 0.obs;

@@ -18,6 +18,7 @@ class Player with _$Player {
         mark: Mark(
           mark: PlayerMark.cross,
           markColor: PlayerColor.black,
+          index: 0,
         ));
   }
 }
@@ -25,13 +26,19 @@ class Player with _$Player {
 class Mark {
   final PlayerMark mark;
   final PlayerColor markColor;
+  final int index;
 
-  Mark({required this.mark, required this.markColor});
+  Mark({
+    required this.mark,
+    required this.markColor,
+    required this.index,
+  });
 
   factory Mark.fromJson(Map<String, dynamic> json) {
     return Mark(
       mark: PlayerMark.values[json['mark'] as int],
       markColor: PlayerColor.values[json['markColor'] as int],
+      index: json['index'] as int,
     );
   }
 
@@ -39,6 +46,7 @@ class Mark {
     return {
       'mark': mark.index,
       'markColor': markColor.index,
+      'index': index,
     };
   }
 }

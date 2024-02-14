@@ -21,6 +21,7 @@ class Board {
         Mark(
           mark: PlayerMark.empty,
           markColor: PlayerColor.black,
+          index: 0,
         ),
       ),
     );
@@ -63,8 +64,8 @@ extension BoardExtension on Board {
       int rowCount = 0;
       int colCount = 0;
       for (int j = 0; j < size; j++) {
-        if (cells[i][j] == mark) rowCount++;
-        if (cells[j][i] == mark) colCount++;
+        if (cells[i][j].mark == mark.mark) rowCount++;
+        if (cells[j][i].mark == mark.mark) colCount++;
       }
       if (rowCount == winCondition || colCount == winCondition) return true;
     }
@@ -75,8 +76,9 @@ extension BoardExtension on Board {
         int diag1Count = 0;
         int diag2Count = 0;
         for (int i = 0; i < winCondition; i++) {
-          if (cells[startRow + i][startCol + i] == mark) diag1Count++;
-          if (cells[startRow + i][startCol + winCondition - 1 - i] == mark) {
+          if (cells[startRow + i][startCol + i].mark == mark.mark) diag1Count++;
+          if (cells[startRow + i][startCol + winCondition - 1 - i].mark ==
+              mark.mark) {
             diag2Count++;
           }
         }

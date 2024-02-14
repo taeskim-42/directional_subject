@@ -29,6 +29,7 @@ class GamePage extends GetView<GamePageController> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      Text("${controller.currentGameIndex.value}"),
                       Container(
                         width: 20, // 동그라미의 너비
                         height: 20, // 동그라미의 높이

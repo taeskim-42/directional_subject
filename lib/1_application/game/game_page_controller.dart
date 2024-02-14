@@ -20,11 +20,20 @@ class GamePageController extends GetxController {
   final currentCol = 0.obs;
   final isBoardEmpty = true.obs;
   final undoClicked = false.obs;
+  final currentGameIndex = 0.obs;
 
   void playGame(int row, int col) {
     currentRow.value = row;
     currentCol.value = col;
-    var board = placeMark(row, col, currentGame.value.currentPlayer.mark);
+    currentGameIndex.value += 1;
+    var player = currentGame.value.currentPlayer;
+    player = player.copyWith(
+      mark: Mark(
+          mark: player.mark.mark,
+          markColor: player.mark.markColor,
+          index: currentGameIndex.value),
+    );
+    var board = placeMark(row, col, player.mark);
     var switchedPlayer = switchPlayer();
     currentGame.value = currentGame.value.copyWith(
       currentPlayer: switchedPlayer,
@@ -43,7 +52,7 @@ class GamePageController extends GetxController {
           middleText: "현재의 기록은 모두 저장됩니다.",
           buttonText: "홈으로 돌아가기");
       currentGame.value = currentGame.value
-          .copyWith(state: currentGame.value.currentPlayer.name);
+          .copyWith(state: currentGame.value.currentPlayer.name, board: board);
       _pref.saveGameRecord(currentGame.value);
     } else if (board.checkDraw()) {
       showAlertDialog(
@@ -68,8 +77,15 @@ class GamePageController extends GetxController {
 
   void handleUndo(Player player) {
     player.name == "Player1" ? player1Undo.value -= 1 : player2Undo.value -= 1;
-    var board = placeMark(currentRow.value, currentCol.value,
-        Mark(mark: PlayerMark.empty, markColor: PlayerColor.black));
+    currentGameIndex.value -= 1;
+    var board = placeMark(
+        currentRow.value,
+        currentCol.value,
+        Mark(
+          mark: PlayerMark.empty,
+          markColor: PlayerColor.black,
+          index: currentGameIndex.value,
+        ));
     var switchedPlayer = switchPlayer();
     currentGame.value = currentGame.value.copyWith(
       currentPlayer: switchedPlayer,

@@ -1,4 +1,5 @@
 import 'package:directional_subject/2_domain/game/game.dart';
+import 'package:directional_subject/2_domain/game_record/game_record.dart';
 import 'package:get/get.dart';
 
 abstract class IAppRouter {
@@ -7,6 +8,7 @@ abstract class IAppRouter {
   void toGameSettings();
   void toGame(Game game);
   void toGameRecords();
+  void toGameRecordsDetail(GameRecord gameRecord);
 }
 
 class AppRouter extends IAppRouter {
@@ -43,5 +45,15 @@ class AppRouter extends IAppRouter {
     if (game != null) {
       Get.toNamed("/game", arguments: {'game': game});
     }
+  }
+
+  @override
+  void toGameRecordsDetail(GameRecord gameRecord) {
+    Get.toNamed(
+      "/records/${gameRecord.endTime.toIso8601String()}",
+      arguments: {
+        'gameRecord': gameRecord,
+      },
+    );
   }
 }

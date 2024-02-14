@@ -24,8 +24,13 @@ class PlayerMarkSelector extends StatelessWidget {
             PlayerMark selectedMark = PlayerMark.values
                 .sublist(0, PlayerMark.values.length - 1)[index];
             if (selectedMark != tPlayer.mark.mark) {
-              updatePlayerMark(cPlayer,
-                  Mark(mark: selectedMark, markColor: cPlayer.mark.markColor));
+              updatePlayerMark(
+                  cPlayer,
+                  Mark(
+                    mark: selectedMark,
+                    markColor: cPlayer.mark.markColor,
+                    index: 0,
+                  ));
             }
           },
           isSelected: PlayerMark.values
@@ -55,8 +60,12 @@ class PlayerMarkSelector extends StatelessWidget {
           onPressed: (int index) {
             PlayerColor selectedMarkColor = PlayerColor.values[index];
             if (selectedMarkColor != tPlayer.mark.markColor) {
-              updatePlayerMark(cPlayer,
-                  Mark(mark: cPlayer.mark.mark, markColor: selectedMarkColor));
+              updatePlayerMark(
+                  cPlayer,
+                  Mark(
+                      mark: cPlayer.mark.mark,
+                      markColor: selectedMarkColor,
+                      index: 0));
             }
           },
           isSelected: PlayerColor.values

@@ -19,9 +19,17 @@ class Game with _$Game {
     // Player, Board, GameState의 기본 인스턴스를 사용하여 Game을 초기화합니다.
     return Game(
       player1: Player.init().copyWith(
-          mark: Mark(mark: PlayerMark.cross, markColor: PlayerColor.blue)),
+          mark: Mark(
+        mark: PlayerMark.cross,
+        markColor: PlayerColor.blue,
+        index: 0,
+      )),
       player2: Player.init().copyWith(
-          mark: Mark(mark: PlayerMark.circle, markColor: PlayerColor.red)),
+          mark: Mark(
+        mark: PlayerMark.circle,
+        markColor: PlayerColor.red,
+        index: 0,
+      )),
       board: Board.init(3, 3), // Board의 기본 인스턴스
       currentPlayer: Player
           .init(), // 현재 플레이어의 기본 인스턴스, 필요에 따라 player1 또는 player2를 할당할 수 있습니다.
