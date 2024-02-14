@@ -2,6 +2,7 @@ import 'package:directional_subject/0_presentation/game/components/dialog.dart';
 import 'package:directional_subject/1_application/core/routers.dart';
 import 'package:directional_subject/2_domain/board/board.dart';
 import 'package:directional_subject/2_domain/game/game.dart';
+import 'package:directional_subject/2_domain/game_record/i_game_record.dart';
 import 'package:directional_subject/2_domain/player/player.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,8 @@ class GamePageController extends GetxController {
 
   GamePageController(this.game);
   final router = Get.find<IAppRouter>();
+  final _pref = Get.find<IGameRecordRepository>();
+
   final currentGame = Game.init().obs;
   final player1Undo = 3.obs;
   final player2Undo = 3.obs;
@@ -27,7 +30,6 @@ class GamePageController extends GetxController {
       currentPlayer: switchedPlayer,
       board: board,
     );
-
     isBoardEmpty.value = currentGame.value.board.cells
         .every((row) => row.every((cell) => cell.mark == PlayerMark.empty));
   }
@@ -40,6 +42,16 @@ class GamePageController extends GetxController {
           titleText: "${currentGame.value.currentPlayer.name}의 승리를 축하합니다.",
           middleText: "현재의 기록은 모두 저장됩니다.",
           buttonText: "홈으로 돌아가기");
+      currentGame.value = currentGame.value
+          .copyWith(state: currentGame.value.currentPlayer.name);
+      _pref.saveGameRecord(currentGame.value);
+    } else if (board.checkDraw()) {
+      showAlertDialog(
+          titleText: "무승부 입니다.",
+          middleText: "현재의 기록은 모두 저장됩니다.",
+          buttonText: "홈으로 돌아가기");
+      currentGame.value = currentGame.value.copyWith(state: "draw");
+      _pref.saveGameRecord(currentGame.value);
     }
     undoClicked.value = false;
     return board;

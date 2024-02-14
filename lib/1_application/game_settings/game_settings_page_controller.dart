@@ -73,7 +73,7 @@ class GameSettingsPageController extends GetxController {
       player2: player2.value,
       board: board,
       currentPlayer: currentPlayer,
-      state: GameState.inProgress,
+      state: "In progress",
     );
     router.toGame(game);
   }

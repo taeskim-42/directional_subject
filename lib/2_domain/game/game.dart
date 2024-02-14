@@ -5,14 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'game.freezed.dart';
 
-enum GameState {
-  notStarted,
-  inProgress,
-  player1Wins,
-  player2Wins,
-  draw,
-}
-
 @freezed
 class Game with _$Game {
   const factory Game({
@@ -20,7 +12,7 @@ class Game with _$Game {
     required Player player2,
     required Board board,
     required Player currentPlayer,
-    required GameState state,
+    required String state,
   }) = _Game;
 
   factory Game.init() {
@@ -33,7 +25,7 @@ class Game with _$Game {
       board: Board.init(3, 3), // Board의 기본 인스턴스
       currentPlayer: Player
           .init(), // 현재 플레이어의 기본 인스턴스, 필요에 따라 player1 또는 player2를 할당할 수 있습니다.
-      state: GameState.notStarted, // 게임 상태를 '시작 전'으로 설정
+      state: "notStarted", // 게임 상태를 '시작 전'으로 설정
     );
   }
 }

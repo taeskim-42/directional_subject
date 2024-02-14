@@ -20,7 +20,7 @@ mixin _$Game {
   Player get player2 => throw _privateConstructorUsedError;
   Board get board => throw _privateConstructorUsedError;
   Player get currentPlayer => throw _privateConstructorUsedError;
-  GameState get state => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameCopyWith<Game> get copyWith => throw _privateConstructorUsedError;
@@ -36,11 +36,10 @@ abstract class $GameCopyWith<$Res> {
       Player player2,
       Board board,
       Player currentPlayer,
-      GameState state});
+      String state});
 
   $PlayerCopyWith<$Res> get player1;
   $PlayerCopyWith<$Res> get player2;
-  $BoardCopyWith<$Res> get board;
   $PlayerCopyWith<$Res> get currentPlayer;
 }
 
@@ -83,7 +82,7 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as GameState,
+              as String,
     ) as $Val);
   }
 
@@ -100,14 +99,6 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
   $PlayerCopyWith<$Res> get player2 {
     return $PlayerCopyWith<$Res>(_value.player2, (value) {
       return _then(_value.copyWith(player2: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BoardCopyWith<$Res> get board {
-    return $BoardCopyWith<$Res>(_value.board, (value) {
-      return _then(_value.copyWith(board: value) as $Val);
     });
   }
 
@@ -132,14 +123,12 @@ abstract class _$$GameImplCopyWith<$Res> implements $GameCopyWith<$Res> {
       Player player2,
       Board board,
       Player currentPlayer,
-      GameState state});
+      String state});
 
   @override
   $PlayerCopyWith<$Res> get player1;
   @override
   $PlayerCopyWith<$Res> get player2;
-  @override
-  $BoardCopyWith<$Res> get board;
   @override
   $PlayerCopyWith<$Res> get currentPlayer;
 }
@@ -180,7 +169,7 @@ class __$$GameImplCopyWithImpl<$Res>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as GameState,
+              as String,
     ));
   }
 }
@@ -204,7 +193,7 @@ class _$GameImpl implements _Game {
   @override
   final Player currentPlayer;
   @override
-  final GameState state;
+  final String state;
 
   @override
   String toString() {
@@ -241,7 +230,7 @@ abstract class _Game implements Game {
       required final Player player2,
       required final Board board,
       required final Player currentPlayer,
-      required final GameState state}) = _$GameImpl;
+      required final String state}) = _$GameImpl;
 
   @override
   Player get player1;
@@ -252,7 +241,7 @@ abstract class _Game implements Game {
   @override
   Player get currentPlayer;
   @override
-  GameState get state;
+  String get state;
   @override
   @JsonKey(ignore: true)
   _$$GameImplCopyWith<_$GameImpl> get copyWith =>

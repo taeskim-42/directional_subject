@@ -15,7 +15,7 @@ class GameSettingsPage extends GetView<GameSettingsPageController> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text("1.Game size 설정해주세요."),
               AppSpacing.vXTiny,

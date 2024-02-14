@@ -1,16 +1,16 @@
 import 'dart:math';
 import 'package:directional_subject/2_domain/player/player.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'board.freezed.dart';
+class Board {
+  final int size;
+  final List<List<Mark>> cells;
+  final int winCondition;
 
-@freezed
-class Board with _$Board {
-  const factory Board({
-    required int size,
-    required List<List<Mark>> cells,
-    required int winCondition,
-  }) = _Board;
+  Board({
+    required this.size,
+    required this.cells,
+    required this.winCondition,
+  });
 
   factory Board.init(int size, [int? winCondition]) {
     final effectiveWinCondition = min(winCondition ?? size, size);
@@ -26,6 +26,23 @@ class Board with _$Board {
     );
     return Board(size: size, cells: cells, winCondition: effectiveWinCondition);
   }
+
+  factory Board.fromJson(Map<String, dynamic> json) {
+    return Board(
+      size: json['size'] as int,
+      cells: (json['cells'] as List)
+          .map((row) =>
+              (row as List).map((cell) => Mark.fromJson(cell)).toList())
+          .toList(),
+      winCondition: json['winCondition'] as int,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "size": size,
+        "cells": cells,
+        "winCondition": winCondition,
+      };
 }
 
 extension BoardExtension on Board {
@@ -71,5 +88,18 @@ extension BoardExtension on Board {
 
     // 모든 검사에서 승리 조건을 만족하지 못한 경우
     return false;
+  }
+
+  bool checkDraw() {
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        // Mark.empty는 빈 칸을 나타내는 값을 가정
+        if (cells[i][j].mark == PlayerMark.empty) {
+          return false; // 빈 칸이 있으면 아직 무승부가 아님
+        }
+      }
+    }
+    // 모든 칸이 채워져 있고, checkWin이 false라면 무승부
+    return true;
   }
 }

@@ -1,3 +1,16 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:directional_subject/2_domain/game_record/game_record.dart';
+import 'package:directional_subject/2_domain/game_record/i_game_record.dart';
+import 'package:get/get.dart';
 
-class GamePageRecordContorller extends GetxController {}
+class GamePageRecordController extends GetxController {
+  final _repo = Get.find<IGameRecordRepository>();
+
+  final gameRecords = <GameRecord>[].obs;
+
+  @override
+  void onInit() async {
+    gameRecords.value = await _repo.getGameRecords() ?? [];
+
+    super.onInit();
+  }
+}

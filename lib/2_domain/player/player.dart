@@ -27,6 +27,20 @@ class Mark {
   final PlayerColor markColor;
 
   Mark({required this.mark, required this.markColor});
+
+  factory Mark.fromJson(Map<String, dynamic> json) {
+    return Mark(
+      mark: PlayerMark.values[json['mark'] as int],
+      markColor: PlayerColor.values[json['markColor'] as int],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'mark': mark.index,
+      'markColor': markColor.index,
+    };
+  }
 }
 
 extension PlayerExtension on Player {

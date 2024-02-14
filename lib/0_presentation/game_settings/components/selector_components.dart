@@ -17,6 +17,7 @@ class PlayerMarkSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ToggleButtons(
           onPressed: (int index) {
@@ -36,12 +37,21 @@ class PlayerMarkSelector extends StatelessWidget {
               .map((option) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(option.toString().split('.').last),
+              child: Column(
+                children: [
+                  Text(
+                    option.toString().split('.').last,
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  Text(option.symbol),
+                ],
+              ),
             );
           }).toList(),
         ),
         AppSpacing.hLarge,
         ToggleButtons(
+          fillColor: cPlayer.mark.markColor.color,
           onPressed: (int index) {
             PlayerColor selectedMarkColor = PlayerColor.values[index];
             if (selectedMarkColor != tPlayer.mark.markColor) {
@@ -55,7 +65,10 @@ class PlayerMarkSelector extends StatelessWidget {
           children: PlayerColor.values.map((option) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(option.toString().split('.').last),
+              child: Text(
+                option.toString().split('.').last,
+                style: const TextStyle(color: Colors.black),
+              ),
             );
           }).toList(),
         ),
@@ -86,7 +99,7 @@ class GameSizeSelector extends StatelessWidget {
       children: gameSizeOptions
           .map((size) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text(size.toString()),
+                child: Text("$size x $size"),
               ))
           .toList(),
     );
