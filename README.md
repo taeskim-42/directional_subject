@@ -1,16 +1,11 @@
 # directional_subject
 
-A new Flutter project.
+1. 실행환경
+   Chrome(web-javascript)화면을 기반으로 만들어졌습니다.
 
-## Getting Started
+해당코드를 통해 실행 할 수 있습니다.
 
-This project is a starting point for a Flutter application.
+flutter run -d chrome
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. DDD와 클린아키텍쳐를 기반으로 작성된 코드입니다.
+2. SharedPreference를 통해 로컬에 데이터를 저장하였습니다.
